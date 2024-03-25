@@ -1,16 +1,23 @@
-from openai import OpenAI 
+import os
+import asyncio
+from openai import AsyncOpenAI
 
-client = OpenAI(api_key="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")
-
-# Example: Request to the API (Adjust as needed)
-response = client.Completion.create(
-  engine="text-davinci-003",
-  prompt="Translate the following English text to French: 'Hello, world!'",
-  temperature=0.7,
-  max_tokens=60,
-  top_p=1.0,
-  frequency_penalty=0.0,
-  presence_penalty=0.0
+client = AsyncOpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-print(response.choices[0].text.strip())
+
+async def main() -> None:
+    chat_completion = await client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": "Say this is a test",
+            }
+        ],
+        model="gpt-3.5-turbo",
+    )
+
+
+asyncio.run(main())
