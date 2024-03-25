@@ -3,7 +3,7 @@ import openai
 openai.api_key = "OPENAI_AP_KEY"
 
 def chat(prompt):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.0-turbo",
         messages=[{"role": "user", "content": prompt}] 
     )
