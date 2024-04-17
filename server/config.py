@@ -1,17 +1,3 @@
-from dotenv import load_dotenv
-import os
-import redis
-
-load_dotenv()
-
-class ApplicationConfig:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = r"sqlite:///./db.sqlite"
-
-    SESSION_TYPE = "redis"
-    SESSION_PERMANENT = False
-    SESSION_USE_SIGNER = True
-    SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
+MONGODB_CONNECTION_STRING = "mongodb+srv://datarep:F0Ps2tT2XWn4j2UP@cluster1.eph68ut.mongodb.net/?retryWrites=true&w=majority"
+MONGODB_DATABASE_NAME = "TaskManager"
+MONGODB_TODO_ITEMS_COLLECTION = "my_tasks1"
