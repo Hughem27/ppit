@@ -24,6 +24,59 @@
   color: white;
 }
 
+.todo-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  background-color: #ff5c5c;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-button:hover {
+  background-color: #ff7878;
+}
+
+.no-tasks {
+  color: #777;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
 .App-link {
   color: #61dafb;
 }

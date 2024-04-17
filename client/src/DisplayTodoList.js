@@ -1,28 +1,29 @@
-function DisplayTodoList({todoList, onDeleteTodoItem}) {
-    if (todoList.length > 0) {
-        return (
-            <ul className="todo-list">
-                {todoList.map((item, index) => (
-                    <div className="todo-item-wrapper" key={item.id}>
-                        <li>{item.content}</li>
-                        <button 
-                            className="delete-button" 
-                            onClick={(e) => {
-                                onDeleteTodoItem(item.id);
-                        }}>Delete</button>
-                    </div>
-                ))}
-            </ul>
-        )
-    }
+import "./App.css";
 
-    else {
-        return (
-            <div className="empty-wrapper">
-                <p>No task found</p>
-            </div>
-        )
-    }
-}
-
-export default DisplayTodoList;
+function DisplayTodoList({ todoList, onDeleteTodoItem }) {
+    return (
+      <div className="todo-list-container">
+        
+        {todoList.length > 0 ? (
+          <ul className="todo-list">
+            {todoList.map((item) => (
+              <li key={item.id} className="todo-item">
+                <span>{item.content}</span>
+                <button
+                  className="delete-button"
+                  onClick={() => onDeleteTodoItem(item.id)}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="no-tasks">No tasks found</p>
+        )}
+      </div>
+    );
+  }
+  
+  export default DisplayTodoList;
+  
