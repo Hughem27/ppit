@@ -3,7 +3,7 @@ import axios from "axios"
 
 import InputTodoItem from "./InputTodoItem"
 import DisplayTodoList from "./DisplayTodoList"
-import OpenAIRequest from './OpenAIRequest';
+import OpenAIRequest from './openAIRequest';
 
 
 import configData from "./config.json"

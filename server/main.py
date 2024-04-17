@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 
 from pymongo import MongoClient
@@ -36,3 +36,37 @@ def delete_todo_item():
     item_id = request.json["item_id"]
     items_collection.delete_one({"_id": ObjectId(item_id)})
     return {}
+
+####################################
+import sys
+import os
+print("Current Working Directory:", os.getcwd())
+sys.path.append('../client/src')  # Adjust based on your actual structure
+
+
+from flask import Flask
+import sys
+import os
+
+from chatbot import respond
+
+
+
+app = Flask(__name__)
+app.secret_key = 'your-secret-key'  # Needed to use sessions securely
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json['message']
+    # Retrieve history from the session, or start a new one
+    history = session.get('history', [])
+    
+    response, updated_history = respond(user_input, history)
+    
+    # Save the updated history back to the session
+    session['history'] = updated_history
+
+    return jsonify({"message": response})
+
+if __name__ == '__main__':
+    app.run(debug=True)
